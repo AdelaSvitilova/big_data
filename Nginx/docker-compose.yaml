@@ -1,0 +1,36 @@
+version: '3'
+services:
+  flask0:
+    build: .
+    container_name: flask0
+    environment:
+      - HOSTNAME=flask0
+    # ports:
+    #   - "5000:5000"
+    volumes:
+      - ./src:/app
+    expose:
+      - "5000"
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+
+  flask1:
+    build: .
+    container_name: flask1
+    environment:
+      - HOSTNAME=flask1
+    # ports:
+    #   - "5001:5000"
+    volumes:
+      - ./src:/app
+    expose:
+      - "5000"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf

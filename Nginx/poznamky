@@ -1,0 +1,6 @@
+docker run -p 8000:5000 flask
+http://127.0.0.1:8000/
+
+bash: ./test_ddos.sh
+200 OK
+503 Service Temporarily Unavailable

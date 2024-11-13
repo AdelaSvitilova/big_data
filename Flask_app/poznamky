@@ -1,0 +1,2 @@
+docker run -p 8000:5000 flask
+http://127.0.0.1:8000/
